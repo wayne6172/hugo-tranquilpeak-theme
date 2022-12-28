@@ -37,13 +37,20 @@ $(document).ready(function() {
 </script>
 {{ end }}
 {{ if or .Params.math .Site.Params.math }}
-  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml-full-speech.min.js" integrity="sha512-aQ9Jr/9Srs06OIXwC6Qm8EiTa3rd+R2XB+4JNuMHQPCNr0JQPEEHs7S/6d/LKaw5Lr9/w3SBN1pEnOn11C4rfA==" crossorigin="anonymous"></script>
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      CommonHTML: { linebreaks: { automatic: true } },
-      tex2jax: { inlineMath: [ ['$', '$'], ['\\(','\\)'] ], displayMath: [ ['$$','$$'], ['\\[', '\\]'] ], processEscapes: false },
-      messageStyle: 'none'
-    });
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.4/katex.min.css" integrity="sha512-mQwom8Ns4op+H29oDkD/LXO/OsXPvCFfkgZkFAVrhhePzRLU8NUI3Nkm43NhWUSmj3p5Cca2HTEkMQmXQRwDQQ==" crossorigin="anonymous">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.4/katex.min.js" integrity="sha512-sHSNLECRJSK+BFs7E8DiFc6pf6n90bLI85Emiw1jhreduZhK3VXgq9l4kAt9eTIHYAcuQBKHL01QKs4/3Xgl8g==" crossorigin="anonymous"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.4/contrib/auto-render.min.js" integrity="sha512-iWiuBS5nt6r60fCz26Nd0Zqe0nbk1ZTIQbl3Kv7kYsX+yKMUFHzjaH2+AnM6vp2Xs+gNmaBAVWJjSmuPw76Efg==" crossorigin="anonymous"></script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+          renderMathInElement(document.body, {
+              delimiters: [
+                  {left: "$$", right: "$$", display: true},
+                  {left: "$", right: "$", display: false},
+                  {left: "\\(", right: "\\)", display: false},
+                  {left: "\\[", right: "\\]", display: true}
+              ]
+          });
+      });
   </script>
 {{ end }}
 {{ with .Site.Params.algolia }}
